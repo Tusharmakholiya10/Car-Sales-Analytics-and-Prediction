@@ -1,13 +1,17 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import mysql.connector
+    
+import os
+from dotenv import load_dotenv
 
-# Connect to MySQL
+load_dotenv()
+
 conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Tushar@26",
-    database="car_sales_db"
+    host=os.getenv("MYSQL_HOST"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    database=os.getenv("MYSQL_DATABASE")
 )
 # (1)Top 10 Manufactures (Bar Chart)
 query = """
@@ -35,7 +39,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 
 
-# plt.show()
+# plt.show()   (#Chart Saved Here)
 plt.savefig("output/top10_manufacturers.png")
 print("Chart saved successfully!")
 plt.close()
@@ -57,7 +61,19 @@ plt.pie(
     autopct="%1.1f%%"
 )
 plt.title("Vehicle Type Distribution")
-plt.show()
+plt.savefig(
+    "output/vehicle_type_distribution.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+print("Vehicle type chart saved successfully!")
+
+plt.close()
+
+# plt.savefig("vehicle_type_distribution.png",dpi=300, bbox_inches="tight")
+# print("output/Pie Chart Saved Successfully")
+# plt.close()
 
 
 # (3)Scatter Plot (Sales vs Price)
@@ -101,19 +117,40 @@ plt.show()
 
 
 # (5) Correlation Heatmap
+
 import seaborn as sns
 
-numeric_df = df.select_dtypes(include=["float64","int64"])
+query = """
+SELECT *
+FROM car_sales;
+"""
 
-plt.figure(figsize=(12,8))
+df = pd.read_sql(query, conn)
+
+numeric_df = df.select_dtypes(include=["number"])
+
+# Remove ID because it has no analytical meaning
+numeric_df = numeric_df.drop(columns=["id"], errors="ignore")
+
+plt.figure(figsize=(14, 10))
+
 sns.heatmap(
     numeric_df.corr(),
     annot=True,
-    cmap="coolwarm"
+    cmap="coolwarm",
+    fmt=".2f"
 )
+
 plt.title("Correlation Matrix")
-plt.show()
-df = pd.read_sql(query, conn)
 
+plt.tight_layout()
 
-conn.close()
+plt.savefig(
+    "output/correlation_heatmap.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+print("Correlation heatmap saved successfully!")
+
+plt.close()

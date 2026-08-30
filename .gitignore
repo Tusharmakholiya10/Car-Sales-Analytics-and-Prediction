@@ -1,6 +1,16 @@
+# Virtual environment
 venv/
+
+# Python cache
 __pycache__/
 *.pyc
+
+# Environment variables / secrets
+.env
+
+# Kaggle credentials
+.kaggle/
+
+# Downloaded dataset files
 data/car-sales.zip
 data/car-sales/
-.kaggle/

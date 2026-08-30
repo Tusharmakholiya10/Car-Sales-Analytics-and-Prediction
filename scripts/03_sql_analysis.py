@@ -1,12 +1,16 @@
 import mysql.connector
 import pandas as pd
 
-# Connect to MySQL
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Tushar@26",
-    database="car_sales_db"
+    host=os.getenv("MYSQL_HOST"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    database=os.getenv("MYSQL_DATABASE")
 )
 
 queries = {
