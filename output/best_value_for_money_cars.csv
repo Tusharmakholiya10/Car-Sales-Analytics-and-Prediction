@@ -1,0 +1,11 @@
+manufacturer,model,horsepower_per_price,horsepower,price_in_thousands
+Toyota,Tacoma,12.32,142.0,11.528
+Hyundai,Elantra,11.87,140.0,11.799
+Dodge,Ram Pickup,11.82,230.0,19.46
+Dodge,Neon,10.44,132.0,12.64
+Plymouth,Neon,10.44,132.0,12.64
+Chevrolet,Malibu,10.28,170.0,16.535
+Ford,Contour,9.98,170.0,17.035
+Ford,Ranger,9.88,119.0,12.05
+Hyundai,Sonata,9.87,148.0,14.999
+Buick,Regal,9.49,240.0,25.3

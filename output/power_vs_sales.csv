@@ -1,0 +1,118 @@
+manufacturer,model,horsepower,sales_in_thousands,power_perf_factor
+Dodge,Viper,450.0,0.916,188.144
+Chevrolet,Corvette,345.0,17.947,141.141
+Audi,A8,310.0,1.38,134.657
+Mercedes-B,SL-Class,302.0,3.311,139.982
+Porsche,Carrera Coupe,300.0,1.28,134.391
+Porsche,Carrera Cabrio,300.0,1.866,135.915
+Lexus,LS400,290.0,6.375,124.447
+Cadillac,DeVille,275.0,63.729,113.855
+Cadillac,Eldorado,275.0,6.536,113.766
+Lincoln,Continental,275.0,13.798,113.54
+Mercedes-B,S-Class,275.0,16.774,125.274
+Chrysler,LHS,253.0,13.462,101.329
+Oldsmobile,Aurora,250.0,14.69,103.442
+Buick,Regal,240.0,39.35,95.6367
+Ford,Expedition,240.0,125.338,100.025
+Dodge,Ram Pickup,230.0,227.061,90.2117
+Toyota,Land Cruiser,230.0,9.835,102.529
+Infiniti,I30,227.0,23.713,92.4369
+Acura,TL,225.0,39.384,91.3708
+Lexus,GS300,225.0,12.698,94.9467
+Nissan,Maxima,222.0,79.853,89.4278
+Mercedes-B,E-Class,221.0,27.602,98.2497
+Ford,F-Series,220.0,540.561,89.4019
+Porsche,Boxter,217.0,8.982,93.4373
+Lincoln,Town car,215.0,48.911,93.9579
+Acura,RL,210.0,8.588,91.3898
+Ford,Explorer,210.0,276.747,87.6355
+Honda,Odyssey,210.0,76.029,85.2177
+Lexus,ES300,210.0,24.072,87.211
+Mitsubishi,Diamante,210.0,5.711,84.8308
+Mercury,Mountaineer,210.0,27.609,85.9497
+Toyota,Avalon,210.0,63.849,84.9119
+Buick,Park Avenue,205.0,27.851,85.8284
+Buick,LeSabre,205.0,83.257,84.2545
+Honda,Passport,205.0,12.855,83.6025
+Pontiac,Bonneville,205.0,35.945,82.6614
+Audi,A6,200.0,18.78,84.5651
+Cadillac,Catera,200.0,11.185,83.4831
+Chevrolet,Camaro,200.0,26.402,81.1185
+Chrysler,Concorde,200.0,31.148,80.0238
+Ford,Crown Victoria,200.0,63.403,80.4995
+Mitsubishi,Montero,200.0,11.337,83.9208
+Mercury,Grand Marquis,200.0,81.174,80.6577
+Pontiac,Firebird,200.0,19.911,81.4927
+Jeep,Grand Cherokee,195.0,157.04,80.3878
+Pontiac,Grand Prix,195.0,92.364,78.3182
+BMW,328i,193.0,9.231,81.8771
+BMW,528i,193.0,17.527,83.9987
+Ford,Mustang,190.0,113.369,76.5092
+Jeep,Cherokee,190.0,80.556,76.5844
+Oldsmobile,Bravada,190.0,20.017,80.5117
+Mercedes-B,C-Class,185.0,18.392,78.2807
+Oldsmobile,Silhouette,185.0,24.361,76.0966
+Chevrolet,Monte Carlo,180.0,42.593,72.0309
+Buick,Century,175.0,91.561,71.1814
+Chevrolet,Lumina,175.0,24.629,69.9914
+Dodge,Ram Wagon,175.0,16.767,71.1353
+Dodge,Ram Van,175.0,31.038,70.0783
+Pontiac,Grand Am,175.0,131.097,70.3897
+Mitsubishi,Montero Sport,173.0,39.348,70.6609
+Chevrolet,Malibu,170.0,135.126,67.3145
+Ford,Contour,170.0,35.068,67.351
+Mercury,Villager,170.0,20.38,69.6715
+Nissan,Quest,170.0,27.308,71.1717
+Nissan,Pathfinder,170.0,42.574,72.2904
+Chrysler,Sebring Conv.,168.0,32.775,69.5214
+Dodge,Stratus,168.0,71.186,67.8761
+Chrysler,Sebring Coupe,163.0,7.854,65.9572
+Dodge,Avenger,163.0,4.734,65.6505
+Mitsubishi,3000GT,161.0,0.11,67.5442
+Ford,Taurus,155.0,245.815,62.5037
+Nissan,Altima,155.0,88.094,63.3137
+Mitsubishi,Eclipse,154.0,42.541,62.442
+Mercury,Sable,153.0,67.956,62.24
+Audi,A4,150.0,20.397,62.7776
+Dodge,Caravan,150.0,181.749,61.227
+Ford,Windstar,150.0,155.787,62.095
+Oldsmobile,Cutlass,150.0,1.112,60.8616
+Plymouth,Voyager,150.0,24.155,60.9512
+Pontiac,Sunfire,150.0,51.645,62.0159
+Toyota,4Runner,150.0,68.411,62.3556
+Volkswagen,Passat,150.0,51.102,61.7014
+Hyundai,Sonata,148.0,29.45,58.7582
+Honda,CR-V,146.0,73.203,60.088
+Mitsubishi,Galant,145.0,55.616,58.6068
+Toyota,Tacoma,142.0,84.087,55.2971
+Acura,Integra,140.0,16.919,58.2802
+Hyundai,Elantra,140.0,66.692,54.59
+Toyota,Celica,140.0,33.269,56.496
+Honda,Accord,135.0,230.902,54.2695
+Toyota,Camry,133.0,247.994,54.3724
+Chrysler,Cirrus,132.0,32.306,53.5662
+Dodge,Neon,132.0,76.034,52.0849
+Plymouth,Neon,132.0,32.734,52.0849
+Plymouth,Breeze,132.0,5.24,53.4119
+Toyota,RAV4,127.0,25.106,51.9551
+Nissan,Sentra,126.0,42.643,50.242
+Mercury,Mystique,125.0,14.351,50.9977
+Mercury,Cougar,125.0,26.529,51.1135
+Saturn,SW,124.0,5.223,49.8658
+Chevrolet,Prizm,120.0,32.299,48.2976
+Dodge,Dakota,120.0,111.313,49.645
+Jeep,Wrangler,120.0,55.557,48.6729
+Toyota,Corolla,120.0,142.535,47.969
+Ford,Ranger,119.0,220.65,47.3895
+Chevrolet,Cavalier,115.0,145.519,46.3633
+Volkswagen,Golf,115.0,9.761,46.9439
+Volkswagen,Jetta,115.0,83.721,47.6382
+Volkswagen,Cabrio,115.0,9.569,48.9074
+Volkswagen,GTI,115.0,5.596,47.9468
+Mitsubishi,Mirage,113.0,26.232,45.8322
+Ford,Escort,110.0,70.227,44.0837
+Honda,Civic,106.0,199.685,42.8791
+Saturn,SL,100.0,80.62,39.9864
+Saturn,SC,100.0,24.546,40.7001
+Hyundai,Accent,92.0,41.184,36.6723
+Chevrolet,Metro,55.0,21.855,23.2763

@@ -1,0 +1,52 @@
+==================================================
+CAR SALES DATA QUALITY REPORT
+==================================================
+
+Total Rows: 117
+Total Columns: 16
+Duplicate Rows: 0
+
+MISSING VALUES BY COLUMN
+--------------------------------------------------
+manufacturer: 0
+model: 0
+sales_in_thousands: 0
+__year_resale_value: 0
+vehicle_type: 0
+price_in_thousands: 0
+engine_size: 0
+horsepower: 0
+wheelbase: 0
+width: 0
+length: 0
+curb_weight: 0
+fuel_capacity: 0
+fuel_efficiency: 0
+latest_launch: 0
+power_perf_factor: 0
+
+DATA TYPES
+--------------------------------------------------
+manufacturer: str
+model: str
+sales_in_thousands: float64
+__year_resale_value: float64
+vehicle_type: str
+price_in_thousands: float64
+engine_size: float64
+horsepower: float64
+wheelbase: float64
+width: float64
+length: float64
+curb_weight: float64
+fuel_capacity: float64
+fuel_efficiency: float64
+latest_launch: str
+power_perf_factor: float64
+
+DATA QUALITY SUMMARY
+--------------------------------------------------
+✓ No duplicate rows found.
+✓ No missing values found.
+
+Report generated successfully.
