@@ -1,67 +1,108 @@
-# 🚗 Car Sales Data Analysis using Python & MySQL
+# 🚗 Car Sales Analytics & Machine Learning Project
 
-An end-to-end data analytics project that downloads a dataset from Kaggle using the Kaggle API, cleans it with Pandas, stores it in MySQL, performs SQL-based analysis, and visualizes insights using Matplotlib.
+An end-to-end **Data Analytics and Machine Learning project** that analyzes car sales data using Python, MySQL, SQL, data visualization, Streamlit, and Machine Learning.
 
-## 🔧 Tech Stack
+The project follows a complete data workflow—from data acquisition and cleaning to database analysis, business insights, interactive visualization, and sales prediction.
+
+---
+
+## 📌 Project Overview
+
+This project analyzes historical car sales data to understand:
+
+- 📈 Which cars and manufacturers perform best
+- 💰 How vehicle price relates to sales
+- ⛽ Which manufacturers are the most fuel-efficient
+- 🚗 Which vehicle types dominate the dataset
+- ⚡ How horsepower and performance relate to sales
+- 💎 Which cars provide the best value for money
+- 🤖 How vehicle characteristics can be used to predict sales
+
+The project also includes an interactive **Streamlit dashboard** with filters, KPI metrics, visualizations, and a Machine Learning prediction feature.
+
+---
+
+# 🎯 Project Objectives
+
+The main objectives of this project are:
+
+1. Clean and prepare the car sales dataset
+2. Store structured data in MySQL
+3. Perform SQL-based business analysis
+4. Generate advanced analytical reports
+5. Create professional data visualizations
+6. Extract actionable business insights
+7. Build an interactive Streamlit dashboard
+8. Train and compare Machine Learning models
+9. Predict car sales based on vehicle characteristics
+
+---
+
+# 🛠️ Tech Stack
+
+### Programming & Data Analysis
 
 - Python
 - Pandas
+- NumPy
+
+### Database
+
 - MySQL
+- SQLAlchemy
 - MySQL Connector
+
+### Data Visualization
+
 - Matplotlib
+- Plotly
+- Streamlit
+
+### Machine Learning
+
+- Scikit-learn
+- Joblib
+
+### Other Tools
+
 - Kaggle API
-- Git & GitHub
+- Git
+- GitHub
 
-## 📂 Project Workflow
+---
 
-1. Download dataset using Kaggle API
-2. Clean and preprocess data with Pandas
-3. Load cleaned data into MySQL
-4. Perform SQL analysis
-5. Visualize insights with Matplotlib
+# 🔄 Project Workflow
 
-## 📁 Project Structure
-
-```
-Car_Sales_Project/
-│── data/
-│── scripts/
-│   ├── 00_download_dataset.py
-│   ├── 01_clean_data.py
-│   ├── 02_load_mysql.py
-│   ├── 03_sql_analysis.py
-│   └── 04_visualization.py
-│── run_pipeline.py
-│── requirements.txt
-└── README.md
-```
-
-## 📊 Dataset
-
-**Source:** https://www.kaggle.com/datasets/gagandeep16/car-sales
-
-## ▶️ Run the Project
-
-```bash
-pip install -r requirements.txt
-python run_pipeline.py
-```
-
-Or run each script individually from the `scripts` folder.
-
-## 📈 Key Insights
-
-- Top manufacturers by sales
-- Average vehicle price by manufacturer
-- Sales analysis using SQL
-- Data visualizations with Matplotlib
-
-## 🚀 Future Improvements
-
-- Interactive dashboard (Power BI/Streamlit)
-- More SQL business queries
-- Advanced visualizations
-
-## 👨‍💻 Author
-
-**Tushar Makholiya**
+```text
+Kaggle Dataset
+      │
+      ▼
+Data Download
+      │
+      ▼
+Data Cleaning & Preprocessing
+      │
+      ▼
+MySQL Database
+      │
+      ▼
+SQL Analysis
+      │
+      ▼
+Data Quality Analysis
+      │
+      ▼
+Advanced Business Analysis
+      │
+      ▼
+Data Visualizations
+      │
+      ▼
+Business Insights
+      │
+      ├──────────────────► Streamlit Dashboard
+      │
+      └──────────────────► Machine Learning
+                              │
+                              ▼
+                        Sales Prediction
