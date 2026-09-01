@@ -6,6 +6,12 @@ The project follows a complete data workflow—from data acquisition and cleanin
 
 ---
 
+## 🌐 Live Demo
+
+🚀 **Try the live dashboard here:**
+
+https://car-sales-analytics-prediction.streamlit.app
+
 ## 📌 Project Overview
 
 This project analyzes historical car sales data to understand:
