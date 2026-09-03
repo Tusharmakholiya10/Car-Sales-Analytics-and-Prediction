@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-
+import numpy as np
 
 # ==========================================
 # PAGE CONFIGURATION
@@ -415,3 +415,101 @@ if st.button("🚀 Predict Sales", width="stretch"):
         "and should be treated as an analytical estimate, not a "
         "production forecast."
     )
+
+        # ==========================================
+    # MODEL EXPLAINABILITY
+    # ==========================================
+
+    st.subheader("🔎 Why did the model make this prediction?")
+
+    st.markdown(
+        "The chart below shows the features that have the strongest "
+        "influence on the Linear Regression model. Positive coefficients "
+        "increase the model's estimated sales, while negative coefficients "
+        "decrease them."
+    )
+
+    # Extract model components
+    preprocessor = model.named_steps["preprocessor"]
+    linear_model = model.named_steps["model"]
+
+    # Get transformed feature names
+    feature_names = preprocessor.get_feature_names_out()
+
+    # Get model coefficients
+    coefficients = linear_model.coef_
+
+    # Create explainability dataframe
+    explainability_df = pd.DataFrame(
+        {
+            "feature": feature_names,
+            "coefficient": coefficients,
+            "absolute_importance": np.abs(coefficients),
+        }
+    )
+
+    # Clean feature names for dashboard display
+    explainability_df["feature"] = (
+        explainability_df["feature"]
+        .str.replace("num__", "", regex=False)
+        .str.replace("cat__", "", regex=False)
+        .str.replace("manufacturer_", "Manufacturer: ", regex=False)
+        .str.replace("vehicle_type_", "Vehicle Type: ", regex=False)
+        .str.replace("_", " ", regex=False)
+    )
+
+    # Sort by importance
+    explainability_df = explainability_df.sort_values(
+        "absolute_importance",
+        ascending=False,
+    )
+
+    # Display top 10
+    top_features = explainability_df.head(10).copy()
+
+    # Sort for horizontal chart
+    top_features = top_features.sort_values(
+        "coefficient",
+        ascending=True,
+    )
+
+    fig_explainability = px.bar(
+        top_features,
+        x="coefficient",
+        y="feature",
+        orientation="h",
+        title="Top 10 Features Influencing Sales",
+        labels={
+            "coefficient": "Model Coefficient",
+            "feature": "Feature",
+        },
+    )
+
+    fig_explainability.add_vline(
+        x=0,
+        line_width=1,
+    )
+
+    fig_explainability.update_layout(
+        height=500,
+    )
+
+    st.plotly_chart(
+        fig_explainability,
+        width="stretch",
+    )
+
+    st.caption(
+        "Positive coefficients indicate positive model influence; "
+        "negative coefficients indicate negative model influence. "
+        "These coefficients describe model behavior and should not "
+        "be interpreted as causal relationships."
+    )
+
+    with st.expander("📊 View feature coefficients"):
+        st.dataframe(
+            explainability_df[
+                ["feature", "coefficient", "absolute_importance"]
+            ],
+            width="stretch",
+        )
