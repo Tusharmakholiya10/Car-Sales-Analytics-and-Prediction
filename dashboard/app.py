@@ -513,3 +513,181 @@ if st.button("🚀 Predict Sales", width="stretch"):
             ],
             width="stretch",
         )
+
+        # ==========================================
+    # MODEL EVALUATION
+    # ==========================================
+
+    st.divider()
+
+    st.subheader("📈 Model Performance & Evaluation")
+
+    st.markdown(
+        "Three machine learning models were evaluated using the same "
+        "training and testing approach. Lower MAE and RMSE indicate "
+        "smaller prediction errors, while a higher R² indicates better "
+        "ability to explain variation in sales."
+    )
+
+
+    # ---------------------------------------------------------
+    # LOAD MODEL COMPARISON RESULTS
+    # ---------------------------------------------------------
+
+    MODEL_COMPARISON_PATH = (
+        BASE_DIR / "output" / "model_comparison.csv"
+    )
+
+    model_comparison = pd.read_csv(MODEL_COMPARISON_PATH)
+
+
+    # ---------------------------------------------------------
+    # IDENTIFY BEST MODEL
+    # ---------------------------------------------------------
+
+    best_model_row = model_comparison.loc[
+        model_comparison["R2 Score"].idxmax()
+    ]
+
+    best_model_name = best_model_row["Model"]
+    best_mae = best_model_row["MAE"]
+    best_rmse = best_model_row["RMSE"]
+    best_r2 = best_model_row["R2 Score"]
+
+
+    # ---------------------------------------------------------
+    # BEST MODEL KPI CARDS
+    # ---------------------------------------------------------
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.metric(
+            "🏆 Best Model",
+            best_model_name,
+        )
+
+    with col2:
+        st.metric(
+            "MAE",
+            f"{best_mae:.2f}",
+        )
+
+    with col3:
+        st.metric(
+            "RMSE",
+            f"{best_rmse:.2f}",
+        )
+
+    with col4:
+        st.metric(
+            "R² Score",
+            f"{best_r2:.4f}",
+        )
+
+
+    # ---------------------------------------------------------
+    # MODEL COMPARISON TABLE
+    # ---------------------------------------------------------
+
+    st.markdown("### Model Comparison")
+
+    display_comparison = model_comparison.copy()
+
+    display_comparison["MAE"] = display_comparison["MAE"].round(2)
+    display_comparison["RMSE"] = display_comparison["RMSE"].round(2)
+    display_comparison["R2 Score"] = display_comparison["R2 Score"].round(4)
+
+    display_comparison = display_comparison.rename(
+            columns={
+                "R2 Score": "R² Score"
+            }
+        )
+
+    st.dataframe(
+        display_comparison,
+        width="stretch",
+        hide_index=True,
+    )
+
+
+    # ---------------------------------------------------------
+    # ERROR METRICS CHART
+    # ---------------------------------------------------------
+
+    fig_error = px.bar(
+        model_comparison,
+        x="Model",
+        y=["MAE", "RMSE"],
+        barmode="group",
+        title="Prediction Error Comparison",
+        labels={
+            "value": "Error",
+            "variable": "Metric",
+            "Model": "Model",
+        },
+    )
+
+    fig_error.update_layout(
+        height=450,
+    )
+
+    st.plotly_chart(
+        fig_error,
+        width="stretch",
+    )
+
+
+    # ---------------------------------------------------------
+    # R2 SCORE CHART
+    # ---------------------------------------------------------
+
+    fig_r2 = px.bar(
+        model_comparison,
+        x="Model",
+        y="R2 Score",
+        title="R² Score Comparison",
+        labels={
+            "R2 Score": "R² Score",
+            "Model": "Model",
+        },
+    )
+
+    fig_r2.add_hline(
+        y=0,
+        line_width=1,
+    )
+
+    fig_r2.update_layout(
+        height=400,
+    )
+
+    st.plotly_chart(
+        fig_r2,
+        width="stretch",
+    )
+
+
+    # ---------------------------------------------------------
+    # INTERPRETATION
+    # ---------------------------------------------------------
+
+    st.markdown("### 📌 Evaluation Summary")
+
+    st.success(
+        f"**{best_model_name}** is the best-performing model in this "
+        f"comparison, with an MAE of **{best_mae:.2f}**, RMSE of "
+        f"**{best_rmse:.2f}**, and R² of **{best_r2:.4f}**."
+    )
+
+    st.info(
+        "MAE represents the average absolute prediction error. "
+        "RMSE gives greater weight to larger errors. R² measures "
+        "how much variation in the target is explained by the model."
+    )
+
+    st.warning(
+        "The dataset is relatively small, so these evaluation results "
+        "should be treated as an analytical benchmark rather than a "
+        "guarantee of real-world forecasting performance."
+    )
