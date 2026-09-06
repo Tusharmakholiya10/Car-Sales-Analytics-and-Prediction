@@ -1,114 +1,53 @@
-# 🚗 Car Sales Analytics & Machine Learning Project
+# 🚗 Car Sales Analytics & Prediction
 
-An end-to-end **Data Analytics and Machine Learning project** that analyzes car sales data using Python, MySQL, SQL, data visualization, Streamlit, and Machine Learning.
+An end-to-end data analytics and machine learning project that analyzes car sales, pricing, vehicle performance, fuel efficiency, and manufacturer trends — with an interactive Streamlit dashboard for exploration and sales prediction.
 
-The project follows a complete data workflow—from data acquisition and cleaning to database analysis, business insights, interactive visualization, and sales prediction.
+## 🌐 Live Dashboard
+
+👉 **[Open the Car Sales Analytics Dashboard](https://car-sales-analytics-prediction.streamlit.app/)**
+
+The dashboard provides:
+
+- 📊 Interactive car sales analytics
+- 🏭 Manufacturer-level analysis
+- 💰 Price and sales analysis
+- ⛽ Fuel efficiency insights
+- 🚗 Vehicle-type comparisons
+- 🤖 Car sales prediction
+- 📈 Machine learning model comparison
+- 🔍 Model explainability / feature influence
 
 ---
-
-## 🌐 Live Demo
-
-🚀 **Try the live dashboard here:**
-
-https://car-sales-analytics-prediction.streamlit.app
 
 ## 📌 Project Overview
 
-This project analyzes historical car sales data to understand:
+This project demonstrates a complete data analytics and machine learning workflow starting from raw car sales data and progressing through data cleaning, SQL analysis, visualization, machine learning, model evaluation, explainability, and dashboard deployment.
 
-- 📈 Which cars and manufacturers perform best
-- 💰 How vehicle price relates to sales
-- ⛽ Which manufacturers are the most fuel-efficient
-- 🚗 Which vehicle types dominate the dataset
-- ⚡ How horsepower and performance relate to sales
-- 💎 Which cars provide the best value for money
-- 🤖 How vehicle characteristics can be used to predict sales
-
-The project also includes an interactive **Streamlit dashboard** with filters, KPI metrics, visualizations, and a Machine Learning prediction feature.
-
----
-
-# 🎯 Project Objectives
-
-The main objectives of this project are:
-
-1. Clean and prepare the car sales dataset
-2. Store structured data in MySQL
-3. Perform SQL-based business analysis
-4. Generate advanced analytical reports
-5. Create professional data visualizations
-6. Extract actionable business insights
-7. Build an interactive Streamlit dashboard
-8. Train and compare Machine Learning models
-9. Predict car sales based on vehicle characteristics
-
----
-
-# 🛠️ Tech Stack
-
-### Programming & Data Analysis
-
-- Python
-- Pandas
-- NumPy
-
-### Database
-
-- MySQL
-- SQLAlchemy
-- MySQL Connector
-
-### Data Visualization
-
-- Matplotlib
-- Plotly
-- Streamlit
-
-### Machine Learning
-
-- Scikit-learn
-- Joblib
-
-### Other Tools
-
-- Kaggle API
-- Git
-- GitHub
-
----
-
-# 🔄 Project Workflow
+### Project Workflow
 
 ```text
-Kaggle Dataset
-      │
-      ▼
-Data Download
-      │
-      ▼
+Raw Dataset
+     ↓
 Data Cleaning & Preprocessing
-      │
-      ▼
+     ↓
 MySQL Database
-      │
-      ▼
+     ↓
 SQL Analysis
-      │
-      ▼
+     ↓
 Data Quality Analysis
-      │
-      ▼
+     ↓
 Advanced Business Analysis
-      │
-      ▼
-Data Visualizations
-      │
-      ▼
-Business Insights
-      │
-      ├──────────────────► Streamlit Dashboard
-      │
-      └──────────────────► Machine Learning
-                              │
-                              ▼
-                        Sales Prediction
+     ↓
+Data Visualization
+     ↓
+Machine Learning
+     ↓
+Model Comparison
+     ↓
+Best Model Selection
+     ↓
+Model Explainability
+     ↓
+Interactive Streamlit Dashboard
+     ↓
+Streamlit Community Cloud Deployment
