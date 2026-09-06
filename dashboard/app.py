@@ -383,6 +383,10 @@ with col2:
 # PREDICTION BUTTON
 # ==========================================
 
+# ==========================================
+# PREDICTION BUTTON
+# ==========================================
+
 if st.button("🚀 Predict Sales", width="stretch"):
 
     prediction_data = pd.DataFrame(
@@ -400,15 +404,107 @@ if st.button("🚀 Predict Sales", width="stretch"):
             "fuel_efficiency": [prediction_fuel_efficiency],
             "power_perf_factor": [
                 prediction_power_perf_factor
-            ]
+            ],
         }
     )
 
     predicted_sales = model.predict(prediction_data)[0]
 
-    st.success(
-        f"### Predicted Sales: {predicted_sales:.2f} Thousand Units"
+    # Historical benchmark
+    historical_average = df["sales_in_thousands"].mean()
+
+    difference_from_average = (
+        predicted_sales - historical_average
     )
+
+    percentage_difference = (
+        difference_from_average / historical_average
+    ) * 100
+
+
+    # ==========================================
+    # PREDICTION RESULT
+    # ==========================================
+
+    st.subheader("🎯 Prediction Result")
+
+    result_col1, result_col2 = st.columns(2)
+
+    with result_col1:
+        st.metric(
+            "Estimated Sales",
+            f"{predicted_sales:,.2f}K units",
+        )
+
+    with result_col2:
+        st.metric(
+            "vs Historical Average",
+            f"{percentage_difference:+.1f}%",
+            delta=f"{difference_from_average:+.2f}K units",
+        )
+
+
+    # ==========================================
+    # INPUT SUMMARY
+    # ==========================================
+
+    st.markdown("### 📋 Prediction Input Summary")
+
+    input_col1, input_col2, input_col3 = st.columns(3)
+
+    with input_col1:
+        st.write(f"**Manufacturer:** {prediction_manufacturer}")
+        st.write(f"**Vehicle Type:** {prediction_vehicle_type}")
+        st.write(f"**Price:** ${prediction_price:.2f}K")
+        st.write(f"**Engine Size:** {prediction_engine_size:.2f}")
+
+    with input_col2:
+        st.write(f"**Horsepower:** {prediction_horsepower:.2f}")
+        st.write(f"**Wheelbase:** {prediction_wheelbase:.2f}")
+        st.write(f"**Width:** {prediction_width:.2f}")
+        st.write(f"**Length:** {prediction_length:.2f}")
+
+    with input_col3:
+        st.write(f"**Curb Weight:** {prediction_curb_weight:.2f}")
+        st.write(f"**Fuel Capacity:** {prediction_fuel_capacity:.2f}")
+        st.write(f"**Fuel Efficiency:** {prediction_fuel_efficiency:.2f}")
+        st.write(
+            f"**Power Performance Factor:** "
+            f"{prediction_power_perf_factor:.2f}"
+        )
+
+
+    # ==========================================
+    # INTERPRETATION
+    # ==========================================
+
+    if predicted_sales > historical_average:
+
+        st.success(
+            f"The predicted sales of **{predicted_sales:,.2f}K units** "
+            f"are **{abs(percentage_difference):.1f}% above** the "
+            f"historical dataset average."
+        )
+
+    elif predicted_sales < historical_average:
+
+        st.warning(
+            f"The predicted sales of **{predicted_sales:,.2f}K units** "
+            f"are **{abs(percentage_difference):.1f}% below** the "
+            f"historical dataset average."
+        )
+
+    else:
+
+        st.info(
+            "The predicted sales are approximately equal to the "
+            "historical dataset average."
+        )
+
+
+    # ==========================================
+    # MODEL LIMITATION
+    # ==========================================
 
     st.info(
         "⚠️ This prediction is based on a small historical dataset "
