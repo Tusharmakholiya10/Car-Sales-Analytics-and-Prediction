@@ -16,4 +16,7 @@ data/car-sales.zip
 data/car-sales/
 
 # Airflow local environment
+
 airflow/.env
+airflow/logs/
+airflow/config/
