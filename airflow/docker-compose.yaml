@@ -45,6 +45,7 @@
 # Feel free to modify this file to suit your needs.
 ---
 x-airflow-common:
+
   &airflow-common
   # In order to add custom dependencies or upgrade provider distributions you can use your extended image.
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
@@ -68,6 +69,7 @@ x-airflow-common:
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
     AIRFLOW__API_AUTH__JWT_SECRET: ${AIRFLOW__API_AUTH__JWT_SECRET:-airflow_jwt_secret}
     AIRFLOW__API_AUTH__JWT_ISSUER: ${AIRFLOW__API_AUTH__JWT_ISSUER:-airflow}
+    MYSQL_HOST: host.docker.internal
     # yamllint disable rule:line-length
     # Use simple http server on scheduler for health checks
     # See https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/check-health.html#scheduler-health-check-server
@@ -89,6 +91,7 @@ x-airflow-common:
   - ../data:/opt/car_sales/data
   - ../models:/opt/car_sales/models
   - ../output:/opt/car_sales/output
+  - ../.env:/opt/car_sales/.env:ro
 
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
