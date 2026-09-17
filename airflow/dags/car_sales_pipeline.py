@@ -1,6 +1,6 @@
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from airflow.sdk import DAG, task
 
@@ -36,6 +36,11 @@ with DAG(
     catchup=False,
     tags=["car-sales", "production"],
     description="End-to-end Car Sales analytics and machine learning pipeline",
+    default_args={
+        "retries": 2,
+        "retry_delay": timedelta(minutes=5),
+    },
+    dagrun_timeout=timedelta(minutes=30),
 ) as dag:
 
     @task
