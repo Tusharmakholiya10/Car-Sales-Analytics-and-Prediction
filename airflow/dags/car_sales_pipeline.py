@@ -39,6 +39,7 @@ with DAG(
     default_args={
         "retries": 2,
         "retry_delay": timedelta(minutes=5),
+        "execution_timeout": timedelta(minutes=10),
     },
     dagrun_timeout=timedelta(minutes=30),
 ) as dag:
