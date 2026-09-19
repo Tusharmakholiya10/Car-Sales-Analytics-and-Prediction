@@ -12,7 +12,10 @@ def run_project_script(script_name: str) -> None:
     """Run one existing project script from the mounted project directory."""
     script_path = f"scripts/{script_name}"
 
-    print(f"Running {script_path}...")
+    print("=" * 60)
+    print(f"Starting pipeline step: {script_path}")
+    print(f"Working directory: {PROJECT_ROOT}")
+    print("=" * 60)
 
     result = subprocess.run(
         [sys.executable, script_path],
@@ -20,13 +23,16 @@ def run_project_script(script_name: str) -> None:
         check=False,
     )
 
+    print(f"Finished pipeline step: {script_path}")
+    print(f"Exit code: {result.returncode}")
+
     if result.returncode != 0:
         raise RuntimeError(
             f"Pipeline failed while running {script_path} "
             f"with exit code {result.returncode}"
         )
 
-    print(f"Completed {script_path}")
+    print(f"Pipeline step completed successfully: {script_path}")
 
 
 with DAG(
