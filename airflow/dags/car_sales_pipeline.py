@@ -7,6 +7,19 @@ from airflow.sdk import DAG, task
 
 PROJECT_ROOT = "/opt/car_sales"
 
+def task_failure_callback(context) -> None:
+    """Log useful information when an Airflow task fails."""
+    task_instance = context["task_instance"]
+    exception = context.get("exception")
+
+    print("=" * 60)
+    print("AIRFLOW TASK FAILURE")
+    print(f"DAG: {task_instance.dag_id}")
+    print(f"Task: {task_instance.task_id}")
+    print(f"Run ID: {task_instance.run_id}")
+    print(f"Try Number: {task_instance.try_number}")
+    print(f"Exception: {exception}")
+    print("=" * 60)
 
 def run_project_script(script_name: str) -> None:
     """Run one existing project script from the mounted project directory."""
@@ -46,9 +59,12 @@ with DAG(
         "retries": 2,
         "retry_delay": timedelta(minutes=5),
         "execution_timeout": timedelta(minutes=10),
+        "on_failure_callback": task_failure_callback,
     },
     dagrun_timeout=timedelta(minutes=30),
 ) as dag:
+
+   
 
     @task
     def validate_input_data():
@@ -106,6 +122,7 @@ with DAG(
     def model_explainability():
         run_project_script("11_model_explainability.py")
 
+    
     # Pipeline dependency graph
     validate = validate_input_data()
     clean = clean_data()
