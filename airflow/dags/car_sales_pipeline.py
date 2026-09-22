@@ -50,11 +50,16 @@ def run_project_script(script_name: str) -> None:
 
 with DAG(
     dag_id="car_sales_pipeline",
+    description=(
+        "End-to-end car sales analytics and machine learning pipeline. "
+        "Validates and cleans data, loads it into MySQL, runs SQL analysis "
+        "and visualizations, compares sales prediction models, trains the "
+        "best model, and generates model explainability results."
+    ),
     start_date=datetime(2026, 1, 1),
     schedule=None,
     catchup=False,
     tags=["car-sales", "production"],
-    description="End-to-end Car Sales analytics and machine learning pipeline",
     default_args={
         "retries": 2,
         "retry_delay": timedelta(minutes=5),
