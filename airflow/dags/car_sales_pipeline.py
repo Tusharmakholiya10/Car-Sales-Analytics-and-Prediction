@@ -50,6 +50,7 @@ def run_project_script(script_name: str) -> None:
 
 with DAG(
     dag_id="car_sales_pipeline",
+    max_active_runs=1,
     description=(
         "End-to-end car sales analytics and machine learning pipeline. "
         "Validates and cleans data, loads it into MySQL, runs SQL analysis "
