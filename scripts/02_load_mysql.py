@@ -1,12 +1,15 @@
-import pandas as pd
-import mysql.connector
 import os
+
+import mysql.connector
+import pandas as pd
+
 # Read cleaned dataset
 df = pd.read_csv("data/car_sales_cleaned.csv")
 
 # Connect to MySQL
 
-from dotenv import load_dotenv  
+from dotenv import load_dotenv
+
 load_dotenv()
 conn = mysql.connector.connect(
     host=os.getenv("MYSQL_HOST"),

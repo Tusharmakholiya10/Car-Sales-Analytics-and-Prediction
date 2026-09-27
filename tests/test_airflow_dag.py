@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DAG_PATH = PROJECT_ROOT / "airflow" / "dags" / "car_sales_pipeline.py"
 

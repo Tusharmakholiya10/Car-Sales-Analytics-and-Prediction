@@ -1,9 +1,8 @@
 import subprocess
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from airflow.sdk import DAG, task
-
 
 PROJECT_ROOT = "/opt/car_sales"
 
@@ -57,7 +56,7 @@ with DAG(
         "and visualizations, compares sales prediction models, trains the "
         "best model, and generates model explainability results."
     ),
-    start_date=datetime(2026, 1, 1),
+    start_date=datetime(2026, 1, 1, tzinfo=timezone.utc),
     schedule=None,
     catchup=False,
     tags=["car-sales", "production"],

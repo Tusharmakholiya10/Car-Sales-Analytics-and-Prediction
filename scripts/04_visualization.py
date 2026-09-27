@@ -1,8 +1,8 @@
-import pandas as pd
+import os
+
 import matplotlib.pyplot as plt
 import mysql.connector
-    
-import os
+import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()

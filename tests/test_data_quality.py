@@ -2,7 +2,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_DATA_PATH = PROJECT_ROOT / "data" / "Car_sales.csv"
 CLEANED_DATA_PATH = PROJECT_ROOT / "data" / "car_sales_cleaned.csv"

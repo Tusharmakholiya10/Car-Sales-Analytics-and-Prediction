@@ -1,9 +1,8 @@
 from pathlib import Path
 
 import joblib
-import pandas as pd
 import matplotlib.pyplot as plt
-
+import pandas as pd
 
 # ---------------------------------------------------------
 # PATHS
@@ -85,7 +84,7 @@ importance_df.to_csv(output_csv, index=False)
 print("\nFeature importance results:")
 print(importance_df.head(15).to_string(index=False))
 
-print(f"\nFeature importance saved to:")
+print("\nFeature importance saved to:")
 print(output_csv)
 
 
@@ -118,7 +117,7 @@ plt.savefig(output_chart, dpi=300, bbox_inches="tight")
 
 plt.close()
 
-print(f"\nFeature importance chart saved to:")
+print("\nFeature importance chart saved to:")
 print(output_chart)
 
 print("\nModel explainability analysis completed successfully!")
