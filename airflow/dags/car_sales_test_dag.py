@@ -1,10 +1,10 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from airflow.sdk import DAG, task
 
 with DAG(
     dag_id="car_sales_test_dag",
-    start_date=datetime(2026, 1, 1, tzinfo=timezone.utc),
+    start_date=datetime(2026, 1, 1, tzinfo=UTC),
     schedule=None,
     catchup=False,
     tags=["car-sales", "test"],
