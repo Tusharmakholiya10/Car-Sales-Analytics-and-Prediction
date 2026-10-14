@@ -98,7 +98,45 @@ with DAG(
     @task
     def load_mysql():
         run_project_script("02_load_mysql.py")
+    @task
+    def validate_mysql_data():
+        import os
 
+        import mysql.connector
+        import pandas as pd
+        from dotenv import load_dotenv
+
+        load_dotenv(f"{PROJECT_ROOT}/.env")
+
+        expected_rows = len(
+            pd.read_csv(f"{PROJECT_ROOT}/data/car_sales_cleaned.csv")
+        )
+
+        conn = mysql.connector.connect(
+            host=os.getenv("MYSQL_HOST"),
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            database=os.getenv("MYSQL_DATABASE"),
+        )
+
+        try:
+            cursor = conn.cursor()
+            try:
+                cursor.execute("SELECT COUNT(*) FROM car_sales")
+                actual_rows = cursor.fetchone()[0]
+            finally:
+                cursor.close()
+        finally:
+            conn.close()
+
+        print(f"Expected rows: {expected_rows}")
+        print(f"MySQL rows: {actual_rows}")
+
+        if actual_rows != expected_rows:
+            raise ValueError(
+                f"MySQL row count mismatch: expected {expected_rows}, "
+                f"found {actual_rows}"
+            )
     @task
     def sql_analysis():
         run_project_script("03_sql_analysis.py")
@@ -133,6 +171,7 @@ with DAG(
     clean = clean_data()
     quality = data_quality()
     mysql = load_mysql()
+    validate_mysql = validate_mysql_data()
     sql = sql_analysis()
     advanced_sql = advanced_sql_analysis()
     visual = visualization()
@@ -146,6 +185,7 @@ with DAG(
         >> clean
         >> quality
         >> mysql
+        >> validate_mysql
         >> sql
         >> advanced_sql
         >> visual
